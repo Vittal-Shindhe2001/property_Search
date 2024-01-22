@@ -1,0 +1,35 @@
+/* button css */
+.btn-rectangular {
+    border-radius: 15px; 
+  }
+  
+#scrollBar {
+    width: 350px;
+    height: 500px;
+    margin: 50px 20px;
+    border: 1px solid #000;
+    overflow: auto;
+}
+
+#scrollBar::-webkit-scrollbar {
+    width: 12px; /* Increase scrollbar width for better visibility */
+}
+
+#scrollBar::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+#scrollBar::-webkit-scrollbar-thumb {
+    background: linear-gradient(red,yellow);
+    border-radius: 10px; /* Rounder thumb shape */
+    box-shadow: inset 0 0 6px rgba(0,0,0,0,3)
+}
+
+#scrollBar::-webkit-scrollbar-corner {
+    background-color: #ffc107; /* Color for the scrollbar corner */
+}
+
+.fontawesome{
+    display: flex;
+    justify-content:flex-end;
+}
