@@ -5,11 +5,10 @@ import { startGetSearchedProperties, startGetfilterProperty, startGetfilterPurch
 import debounce from 'lodash.debounce'
 import { useDispatch } from 'react-redux';
 
-export default function Filters() {
+export default function Filters(props) {
+    const {handleProperty,handlePurchaseType}=props
     const [search, setSearch] = useState('')
-    const [purchaseType, setPurchaseType] = useState('')
-    const [property, setPropertyType] = useState('')
-    console.log(purchaseType);
+    
     const options = ['Buy', 'Rent', 'PG/Co-Living']
     const propertyType = ['Flat', 'Apartment', 'Independent House', 'Pent House', 'Villa', 'Office Space', 'Warehouse', 'Commercial Land', 'Commercial Space']
     const dispatch = useDispatch()
@@ -24,13 +23,7 @@ export default function Filters() {
             dispatch(startGetSearchedProperties(newValue))
         }, 3000), // The wait time in milliseconds
         [])
-    useEffect(() => {
-        dispatch(startGetfilterPurchase(purchaseType))
-    }, [purchaseType])
-    useEffect(() => {
-        dispatch(startGetfilterProperty(property, purchaseType))
-    }, [property])
-
+    
     return (
 
         <div className='container-fuild' id='scrollBar'>
@@ -64,7 +57,7 @@ export default function Filters() {
                 <div className='row'>
                     {options.map((type, index) => (
                         <div className='col-md-3' key={index}>
-                            <button value={type} onClick={(e) => { setPurchaseType(e.target.value) }} type="radio" className="btn btn-outline-secondary btn-block btn-rectangular">{type}</button>
+                            <button value={type} onClick={(e) => { handlePurchaseType(e.target.value) }} type="radio" className="btn btn-outline-secondary btn-block btn-rectangular">{type}</button>
                         </div>
                     ))}
                 </div>
@@ -75,7 +68,7 @@ export default function Filters() {
                 <div className='row mb-4'>
                     {propertyType.map((type, index) => (
                         <div className='col-md-4 mb-4' key={index}>
-                            <button value={type} onClick={(e) => { setPropertyType(e.target.value) }} type="radio" className="btn btn-outline-secondary btn-block btn-rectangular">{type}</button>
+                            <button value={type} onClick={(e) => { handleProperty(e.target.value) }} type="radio" className="btn btn-outline-secondary btn-block btn-rectangular">{type}</button>
                         </div>
                     ))}
                 </div>

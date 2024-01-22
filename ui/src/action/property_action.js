@@ -45,7 +45,6 @@ export const startGetSearchedProperties=(search)=>{
             async()=>{
                try {
                 const searchProperty=await axios.get(`/api/properties/search?search=${search}`)
-                console.log(searchProperty.data);
                 dispatch(setGetFilterProperty(searchProperty.data))
                } catch (error) {
                 alert(error)
@@ -69,12 +68,13 @@ export const startGetfilterPurchase=(data)=>{
         )()
     }
 }
-export const startGetfilterProperty=(data,data1)=>{
+export const startGetfilterProperty=(property,purchaseType)=>{
+    console.log(property,purchaseType);
     return(dispatch)=>{
         (
             async()=>{
                 try {
-                    const filterProperty=await axios.get(`/api/properties/filterCategory?purchaseType=${data1},property=${data}`)
+                    const filterProperty=await axios.get(`/api/properties/filterCategory?property=${property}&purchaseType=${purchaseType}`)
                     dispatch(setGetFilterProperty(filterProperty.data))
                 } catch (error) {
                     alert(error)
