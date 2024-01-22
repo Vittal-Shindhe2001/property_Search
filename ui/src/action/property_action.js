@@ -69,7 +69,6 @@ export const startGetfilterPurchase=(data)=>{
     }
 }
 export const startGetfilterProperty=(property,purchaseType)=>{
-    console.log(property,purchaseType);
     return(dispatch)=>{
         (
             async()=>{

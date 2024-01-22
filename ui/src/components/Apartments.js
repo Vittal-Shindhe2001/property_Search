@@ -6,13 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export default function Apartments(props) {
     const data = props?.data || []
     const [purchaseType, property] = data
-    const [location, setLocation] = useState('')
     const [sorting, setSorting] = useState('')
-    console.log(sorting);
     const dispatch = useDispatch()
     const sort = ['Amount-Low to High', 'Amount-High to Low']
     const properties = useSelector(state => state.property.data)
-    console.table(properties)
     useEffect(() => {
         dispatch(startGetProperties())
     }, [dispatch])
@@ -30,7 +27,7 @@ export default function Apartments(props) {
                     <div className="card-body">
                         <div className='row'>
                             <div className='col-md-6'>
-                                {data ? <h5>{purchaseType} for {property} in {location}</h5> : ""}
+                                {data ? <h5>{purchaseType} for {property} </h5> : ""}
                             </div>
                             <div className='col-md-2'></div>
                             <div className='mx-auto  col-md-2'>
