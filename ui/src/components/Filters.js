@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faSync } from '@fortawesome/free-solid-svg-icons';
-import { startGetSearchedProperties, startGetfilterProperty, startGetfilterPurchase } from '../action/property_action';
+import { startGetSearchedProperties } from '../action/property_action';
 import debounce from 'lodash.debounce'
 import { useDispatch } from 'react-redux';
 
 export default function Filters(props) {
-    const {handleProperty,handlePurchaseType}=props
+    const { handleProperty, handlePurchaseType } = props
     const [search, setSearch] = useState('')
-    
+
     const options = ['Buy', 'Rent', 'PG/Co-Living']
     const propertyType = ['Flat', 'Apartment', 'Independent House', 'Pent House', 'Villa', 'Office Space', 'Warehouse', 'Commercial Land', 'Commercial Space']
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ export default function Filters(props) {
             dispatch(startGetSearchedProperties(newValue))
         }, 3000), // The wait time in milliseconds
         [])
-    
+
     return (
 
         <div className='container-fuild' id='scrollBar'>
@@ -74,7 +74,6 @@ export default function Filters(props) {
                 </div>
             </div>
         </div>
-
     )
 }
 
